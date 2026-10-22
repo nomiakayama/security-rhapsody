@@ -19,7 +19,9 @@ description: >-
 2. Record which environments, mounts, containers and runtime entry points were checked. An
    inaccessible or unexamined target is "Unable to confirm", not "Not affected". For compromise
    incidents, assess installation and execution history even when current indicators are absent.
-3. Fix confirmed affected targets within the rules below. When a fix requires repository changes,
+3. Fix confirmed affected targets within the rules below. For a batch-defined, verified existing
+   mitigation, report "Mitigated" with evidence and upgrade advice; do not repeat remediation
+   solely because the package version remains affected. When a fix requires repository changes,
    leave those changes to the owner and report "Needs owner fix" with the project path, affected
    dependency, proposed version and required manifest/lockfile and deployment changes.
 4. Record the version before and after every change. Mark "Fixed" only after checking the actual
@@ -40,10 +42,10 @@ description: >-
 
 ## Output
 One table per device: item, status, evidence and coverage gaps, version before/after, what the user
-still needs to do. Use Affected / Fixed / Not affected / Unable to confirm / Needs owner fix /
-Needs vendor patch. Keep unresolved coverage gaps visible even when another target for the same
-item was fixed. Finish with a separate list of credentials to rotate and items that need an owner
-or vendor.
+still needs to do. Use Affected / Mitigated / Fixed / Not affected / Unable to confirm /
+Needs owner fix / Needs vendor patch. Keep unresolved coverage gaps visible even when another
+target for the same item was fixed. Finish with a separate list of credentials to rotate and items
+that need an owner or vendor.
 
 ## Adding a batch
 Create `batches/YYYY-MM.md` using the same layout as the existing batches: a numbered section per
