@@ -19,11 +19,14 @@ description: >-
 2. Record which environments, mounts, containers and runtime entry points were checked. An
    inaccessible or unexamined target is "Unable to confirm", not "Not affected". For compromise
    incidents, assess installation and execution history even when current indicators are absent.
-3. Fix confirmed affected targets within the rules below. For a batch-defined, verified existing
-   mitigation, report "Mitigated" with evidence and upgrade advice; do not repeat remediation
-   solely because the package version remains affected. When a fix requires repository changes,
-   leave those changes to the owner and report "Needs owner fix" with the project path, affected
-   dependency, proposed version and required manifest/lockfile and deployment changes.
+3. Fix confirmed affected targets within the rules below. Report "Mitigated" only when the item's
+   batch section explicitly allows that status for a verified mitigation; give evidence and upgrade
+   advice, and do not repeat remediation solely because the package version remains affected.
+   Interim workarounds a section lists without naming "Mitigated" (for example disabling HTTP/3 or
+   capping header sizes) do not qualify: keep the target "Affected" and record the workaround.
+   When a fix requires repository changes, leave those changes to the owner and report
+   "Needs owner fix" with the project path, affected dependency, proposed version and required
+   manifest/lockfile and deployment changes.
 4. Record the version before and after every change. Mark "Fixed" only after checking the actual
    runtime or trust behavior after the change; a package update alone does not prove that a
    running process, container or bundled trust store uses the fix.
